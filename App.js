@@ -3,6 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [courseGoals, setCourseGoals] = useState("");
 
   const goalInputHandler = (text) => {
     setEnteredGoalText(text);
@@ -34,22 +35,23 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     paddingTop: 50,
-    paddingHorizontal: 16,
+    paddingHorizontal: 16
   },
   inputContainer: {
+    felx: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 24,
     borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    borderBottomColor: '#cccccc'
   },
   textInput: {
-    width: "70%",
+    width: '70%',
     marginRight: 8,
-    padding: 8,
+    padding: 8
   },
   goalContainer: {
     flex: 4,
-  },
+  }
 });
