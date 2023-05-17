@@ -1,32 +1,25 @@
-import React, { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button, TextInput, FlatList } from "react-native";
+import GoalItem from "./components/GoalItem";
+import GoalInput from "./components/GoalInput";
 
 export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState("");
-  const [courseGoals, setCourseGoals] = useState("");
 
-  const goalInputHandler = (text) => {
-    setEnteredGoalText(text);
-  };
+  const [courseGoals, setCourseGoals] = useState([]);
 
-  const addGoalHandler = () => {
-    console.log(enteredGoalText);
-  };
+  const addGoalHandler = (enteredGoalText) => {
+    setCourseGoals((currentCourseGoals) => [...currentCourseGoals, {text: enteredGoalText, id: Math.random().toString()}]);
+  }
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Your Course Goal"
-          onChangeText={goalInputHandler}
-          value={enteredGoalText}
-        />
-        <Button title="Add Goal" onPress={addGoalHandler} />
-      </View>
-      <View style={styles.goalContainer}>
-        <Text>List of Goals!</Text>
-      </View>
+      <GoalInput onAddGoal={addGoalHandler}/>
+      <FlatList data={courseGoals} keyExtractor={(item, index) => item.id} renderItem={itemData => {
+        return (
+          <GoalItem text={itemData.item.text} />
+        )
+      }} >
+      </FlatList>
     </View>
   );
 }
@@ -36,20 +29,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
-  },
-  inputContainer: {
-    felx: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
-  },
-  textInput: {
-    width: '70%',
-    marginRight: 8,
-    padding: 8
   },
   goalContainer: {
     flex: 4,
