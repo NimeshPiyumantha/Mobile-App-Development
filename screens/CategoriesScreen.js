@@ -1,30 +1,33 @@
 import { FlatList } from "react-native";
-import CategoryGridTile from '../components/CategoryGridTile';
+import { CATEGORIES } from "../data/dummy-data";
+import CategoryGridTile from "../components/CategoryGridTile";
 import { useNavigation } from "@react-navigation/native";
 
-import { CATEGORIES } from "../data/dummy-data";
+const CategoryScreen = () => {
+  const navigation = useNavigation();//use navigation hook eken thamai navigate method eka call karanne.
 
+  const renderCategoryItem = (itemData) => {
+    const pressHandler = () => {
+      navigation.navigate("MealsOverview",{categoryId: itemData.item.id});//navigate method ekata passed karanava navigate karanna ona screen eka saha pass karanna ona data tika object ekak vidihata
+    };
 
-const CategoriesScreen = () => {
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={pressHandler}
+      />
+    );
+  };
 
-    const navigation = useNavigation();
-
-    const renderCategoryItem = (itemData) => {
-
-        const pressHandler = () => {
-            navigation.navigate("MealsOverview", {categoryId: itemData.item.id});
-        }
-
-        return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler}/>
-    }
-
-    return <FlatList 
-        data={CATEGORIES}
-        keyExtractor={(item) => item.id}
-        renderItem={renderCategoryItem}
-        numColumns={2}
+  return (
+    <FlatList
+      data={CATEGORIES}
+      keyExtractor={(item) => item.id}
+      renderItem={renderCategoryItem}
+      numColumns={2}
     />
+  );
+};
 
-}
-
-export default CategoriesScreen;
+export default CategoryScreen;

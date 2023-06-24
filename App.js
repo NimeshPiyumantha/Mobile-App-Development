@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -36,7 +35,7 @@ export default function App() {
             }}
           />
            <Stack.Screen
-            name="MealsDetailsScreen"
+            name="MealsDetail"
             component={MealsDetailsScreen}
             options={{
               title: "Meal Details",
@@ -47,5 +46,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({});
