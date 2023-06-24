@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Navigator
           initialRouteName="Meals Categories"
           screenOptions={{
-            headerStyle: { backgroundColor: "#3514" },
+            headerStyle: { backgroundColor: "#3f2501" },
             headerTintColor: "#fff",
             headerTitleStyle: { fontWeight: "bold" },
             contentStyle: { backgroundColor: "#3f2f25" },
