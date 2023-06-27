@@ -8,7 +8,9 @@ const MealsOverviewScreen = ({ route }) => {
   const displayMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
-  return <MealsList items={displayMeals} />;
+  return (
+    <MealsList items={displayMeals} />
+  );
 };
 
 export default MealsOverviewScreen;

@@ -6,23 +6,43 @@ import Subtitle from "../components/MealDetails/Subtitle";
 import List from "../components/MealDetails/List";
 import IconButton from "../components/iconButton";
 import { FavoriteContext } from "../store/context/favorite-context";
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFavorite, addFavorite } from "../store/redux/favorites";
 
 const MealDetailScreen = ({ route, navigation }) => {
-  const favoriteMealsCtx = useContext(FavoriteContext); //use context hook eka call karala Favorite context eka use karanna puluwan
+
+  const favoriteMealsIds = useSelector((state) => state.favoriteMeals.ids) //redux eke state eka useSelector eken gannawa
+  const dispatch = useDispatch()
+
+  // const favoriteMealsCtx = useContext(FavoriteContext); //use context hook eka call karala Favorite context eka use karanna puluwan
 
   const mealId = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId); //dummy data valin meal eka gannava
 
-  const isFavorite = favoriteMealsCtx.ids.includes(mealId); //favorite meal eka thiyenavada kiyala check karanna puluwan
+  // start context api
+  // const isFavorite = favoriteMealsCtx.ids.includes(mealId); //favorite meal eka thiyenavada kiyala check karanna puluwan
+
+  // const changeFavoritesStatusHandler = () => {
+  //   if (isFavorite) {
+  //     favoriteMealsCtx.removeFavorite(mealId);
+  //   } else {
+  //     favoriteMealsCtx.addFavorite(mealId);
+  //   }
+  // };
+  // end context api
+  
+  //start redux
+  const isFavorite = favoriteMealsIds.includes(mealId); 
 
   const changeFavoritesStatusHandler = () => {
     if (isFavorite) {
-      favoriteMealsCtx.removeFavorite(mealId);
+      dispatch(removeFavorite({id:mealId})); //dispatch eken action eka call karanna puluwan
     } else {
-      favoriteMealsCtx.addFavorite(mealId);
+      dispatch(addFavorite({id:mealId}));
     }
   };
+  //end redux
 
   useLayoutEffect(() => {
     navigation.setOptions({
