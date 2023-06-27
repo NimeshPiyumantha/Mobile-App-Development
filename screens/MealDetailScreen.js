@@ -11,7 +11,7 @@ import { removeFavorite, addFavorite } from "../store/redux/favorites";
 
 const MealDetailScreen = ({ route, navigation }) => {
 
-  const favoriteMealsIds = useSelector((state) => state.favoriteMeals.ids) //redux eke state eka useSelector eken gannawa
+  const favoriteMealsIds = useSelector((state) => state.favoriteMeals.ids) //redux eke state eka useSelector eka use karanna puluwan values select karanna.
   const dispatch = useDispatch()
 
   // const favoriteMealsCtx = useContext(FavoriteContext); //use context hook eka call karala Favorite context eka use karanna puluwan
