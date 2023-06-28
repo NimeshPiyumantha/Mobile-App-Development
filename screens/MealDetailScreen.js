@@ -44,6 +44,7 @@ const MealDetailScreen = ({ route, navigation }) => {
   };
   //end redux
 
+  //header eke loadweddi saha load wela wada krddi runtime mokak hari krnna onnm use krnne
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
