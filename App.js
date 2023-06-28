@@ -13,8 +13,8 @@ import MealDetailScreen from "./screens/MealDetailScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import FavoriteContextProvider from "./store/context/favorite-context";
 
-const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();// native stack Navigator
+const Drawer = createDrawerNavigator();//drawer Navigator
 
 //start drawer navigator
 const DrawerNavigator = () => {
